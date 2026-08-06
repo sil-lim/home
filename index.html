@@ -15,10 +15,9 @@ body.off #blk{opacity:1}
 }
 .grid .c{animation:fade .3s ease-out var(--d,0s) backwards}
 .grid img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s ease}
-.grid img:hover{opacity:0}
+.grid img.gone,.poem.gone{opacity:0}
 @keyframes fade{from{opacity:0}}
 .poem{transition:opacity .6s ease}
-.poem:hover{opacity:0}
 .poem span{opacity:0}
 .poem{
   grid-column:3/5;
@@ -69,6 +68,8 @@ body.off #blk{opacity:1}
 <script>
 (function(){
 document.addEventListener('click',function(){document.body.classList.add('off')});
+var hv=document.querySelectorAll('.grid img,.poem'),h;
+for(h=0;h<hv.length;h++)hv[h].addEventListener('mouseenter',function(){this.classList.add('gone')});
 document.addEventListener('keydown',function(){document.body.classList.add('off')});
 var p=document.querySelector('.poem'),t=p.textContent,w=document.createElement('div'),sp=[],i,c,s;
 p.textContent='';
