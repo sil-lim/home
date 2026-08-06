@@ -2,7 +2,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4LQ7CKPGH"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-B4LQ7CKPGH');</script>
 <style>
 html,body{margin:0;padding:0;height:100%;background:#fff;overflow:hidden}
-body{display:flex;align-items:center;justify-content:center}
+body{display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+img{-webkit-user-drag:none}
+#blk{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .6s ease;z-index:9}
+body.off #blk{opacity:1}
 .grid{
   display:grid;
   grid-template-columns:repeat(6,1fr);
@@ -10,7 +13,8 @@ body{display:flex;align-items:center;justify-content:center}
   width:min(100vw,150vh);
   aspect-ratio:3/2;
 }
-.grid img{width:100%;height:100%;object-fit:cover;display:block;animation:fade .3s ease-out var(--d,0s) backwards;transition:opacity .6s ease}
+.grid .c{animation:fade .3s ease-out var(--d,0s) backwards}
+.grid img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s ease}
 .grid img:hover{opacity:0}
 @keyframes fade{from{opacity:0}}
 .poem{transition:opacity .6s ease}
@@ -37,8 +41,8 @@ body{display:flex;align-items:center;justify-content:center}
 </style>
 </head><body>
 <div class="grid">
-<img src="jeju/01-GS008909.jpg" alt="" style="--d:0s"><img src="jeju/02-GS008897.jpg" alt="" style="--d:.055s"><img src="jeju/03-GS008896.jpg" alt="" style="--d:.11s"><img src="jeju/04-GS008815.jpg" alt="" style="--d:.165s"><img src="jeju/05-GS008795.jpg" alt="" style="--d:.22s"><img src="jeju/06-GS008802.jpg" alt="" style="--d:.275s">
-<img src="jeju/07-GS008874.jpg" alt="" style="--d:.055s"><img src="jeju/08-GS008996.jpg" alt="" style="--d:.11s"><img src="jeju/09-GS008819.jpg" alt="" style="--d:.165s"><img src="jeju/10-GS008850.jpg" alt="" style="--d:.22s"><img src="jeju/11-GS008830.jpg" alt="" style="--d:.275s"><img src="jeju/12-GS008827.jpg" alt="" style="--d:.33s">
+<div class="c" style="--d:0s"><img src="jeju/01-GS008909.jpg" alt=""></div><div class="c" style="--d:.055s"><img src="jeju/02-GS008897.jpg" alt=""></div><div class="c" style="--d:.11s"><img src="jeju/03-GS008896.jpg" alt=""></div><div class="c" style="--d:.165s"><img src="jeju/04-GS008815.jpg" alt=""></div><div class="c" style="--d:.22s"><img src="jeju/05-GS008795.jpg" alt=""></div><div class="c" style="--d:.275s"><img src="jeju/06-GS008802.jpg" alt=""></div>
+<div class="c" style="--d:.055s"><img src="jeju/07-GS008874.jpg" alt=""></div><div class="c" style="--d:.11s"><img src="jeju/08-GS008996.jpg" alt=""></div><div class="c" style="--d:.165s"><img src="jeju/09-GS008819.jpg" alt=""></div><div class="c" style="--d:.22s"><img src="jeju/10-GS008850.jpg" alt=""></div><div class="c" style="--d:.275s"><img src="jeju/11-GS008830.jpg" alt=""></div><div class="c" style="--d:.33s"><img src="jeju/12-GS008827.jpg" alt=""></div>
 <div class="poem">마음을 두고 왔다
 문 앞
 바닥에
@@ -55,14 +59,17 @@ body{display:flex;align-items:center;justify-content:center}
 꽃살속으로
 간다고 한다
 돌아온다고했다</div>
-<img src="jeju/13-GS008840.jpg" alt="" style="--d:.11s"><img src="jeju/14-GS008857.jpg" alt="" style="--d:.165s"><img src="jeju/15-GS008869.jpg" alt="" style="--d:.33s"><img src="jeju/16-GS008787.jpg" alt="" style="--d:.385s">
-<img src="jeju/17-GS008902.jpg" alt="" style="--d:.165s"><img src="jeju/18-GS008833.jpg" alt="" style="--d:.22s"><img src="jeju/19-GS008914.jpg" alt="" style="--d:.385s"><img src="jeju/20-GS008947.jpg" alt="" style="--d:.44s">
-<img src="jeju/21-GS008933.jpg" alt="" style="--d:.22s"><img src="jeju/22-GS008923.jpg" alt="" style="--d:.275s"><img src="jeju/23-GS008940.jpg" alt="" style="--d:.33s"><img src="jeju/24-GS008995.jpg" alt="" style="--d:.385s">
-<img src="jeju/25-GS009003.jpg" alt="" style="--d:.44s"><img src="jeju/26-GS008893.jpg" alt="" style="--d:.495s"><img src="jeju/27-GS008997.jpg" alt="" style="--d:.275s"><img src="jeju/28-GS008959.jpg" alt="" style="--d:.33s"><img src="jeju/29-GS008971.jpg" alt="" style="--d:.385s"><img src="jeju/30-GS008963.jpg" alt="" style="--d:.44s">
-<img src="jeju/31-GS009008.jpg" alt="" style="--d:.495s"><img src="jeju/32-GS009022.jpg" alt="" style="--d:.55s">
+<div class="c" style="--d:.11s"><img src="jeju/13-GS008840.jpg" alt=""></div><div class="c" style="--d:.165s"><img src="jeju/14-GS008857.jpg" alt=""></div><div class="c" style="--d:.33s"><img src="jeju/15-GS008869.jpg" alt=""></div><div class="c" style="--d:.385s"><img src="jeju/16-GS008787.jpg" alt=""></div>
+<div class="c" style="--d:.165s"><img src="jeju/17-GS008902.jpg" alt=""></div><div class="c" style="--d:.22s"><img src="jeju/18-GS008833.jpg" alt=""></div><div class="c" style="--d:.385s"><img src="jeju/19-GS008914.jpg" alt=""></div><div class="c" style="--d:.44s"><img src="jeju/20-GS008947.jpg" alt=""></div>
+<div class="c" style="--d:.22s"><img src="jeju/21-GS008933.jpg" alt=""></div><div class="c" style="--d:.275s"><img src="jeju/22-GS008923.jpg" alt=""></div><div class="c" style="--d:.33s"><img src="jeju/23-GS008940.jpg" alt=""></div><div class="c" style="--d:.385s"><img src="jeju/24-GS008995.jpg" alt=""></div>
+<div class="c" style="--d:.44s"><img src="jeju/25-GS009003.jpg" alt=""></div><div class="c" style="--d:.495s"><img src="jeju/26-GS008893.jpg" alt=""></div><div class="c" style="--d:.275s"><img src="jeju/27-GS008997.jpg" alt=""></div><div class="c" style="--d:.33s"><img src="jeju/28-GS008959.jpg" alt=""></div><div class="c" style="--d:.385s"><img src="jeju/29-GS008971.jpg" alt=""></div><div class="c" style="--d:.44s"><img src="jeju/30-GS008963.jpg" alt=""></div>
+<div class="c" style="--d:.495s"><img src="jeju/31-GS009008.jpg" alt=""></div><div class="c" style="--d:.55s"><img src="jeju/32-GS009022.jpg" alt=""></div>
 </div>
+<div id="blk"></div>
 <script>
 (function(){
+document.addEventListener('click',function(){document.body.classList.add('off')});
+document.addEventListener('keydown',function(){document.body.classList.add('off')});
 var p=document.querySelector('.poem'),t=p.textContent,w=document.createElement('div'),sp=[],i,c,s;
 p.textContent='';
 for(i=0;i<t.length;i++){
