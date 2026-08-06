@@ -1,68 +1,61 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>elliotsuhr.com</title>
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>elliotsuhr.com</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4LQ7CKPGH"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-B4LQ7CKPGH');</script>
-<style>html,body{margin:0;padding:0;height:100%;background:#02539F;overflow:hidden}body{display:flex;flex-direction:column;align-items:center;justify-content:center;isolation:isolate}
-#art{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1}
-.c1{position:relative;aspect-ratio:400/600;height:min(78vh,132vw);background:#008464}
-.c2{position:absolute;left:3.25%;top:12.3333%;width:85.5%;height:85.5%;background:#EBA500}
-.c3{position:absolute;left:2.924%;top:48.733%;width:48.83%;height:48.928%;background:#E3030F;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#E3030F;line-height:1}
-#ring{position:absolute;font-size:inherit;left:50%;top:50%;width:0;height:0}
-#ring span{position:absolute;left:0;top:0;white-space:pre;will-change:transform}
-#ring i{display:inline-block;font-style:normal;backface-visibility:hidden}</style>
+<style>
+html,body{margin:0;padding:0;height:100%;background:#fff;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:repeat(6,1fr);
+  width:min(100vw,150vh);
+  aspect-ratio:3/2;
+}
+.grid img{width:100%;height:100%;object-fit:cover;display:block}
+.grid img,.poem{opacity:0;animation:fade .3s ease-out forwards;animation-delay:var(--d,0s)}
+@keyframes fade{to{opacity:1}}
+.poem{
+  grid-column:3/5;
+  grid-row:3/5;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding-left:6%;
+  box-sizing:border-box;
+  text-align:left;
+  font-family:"Apple SD Gothic Neo","Noto Sans KR",-apple-system,sans-serif;
+  font-weight:400;
+  color:#111;
+  font-size:calc(min(100vw,150vh)*.0058);
+  line-height:1.9;
+  white-space:pre-line;
+  min-height:0;
+  overflow:hidden;
+}
+</style>
 </head><body>
-<div id="art" aria-hidden="true"><div class="c1"><div class="c2"><div class="c3"><div id="ring"></div></div></div></div></div>
-<script>
-(function(){
-var PHRASE='DIGITALARCHIVEOFMOMENTSANDIMPRESSIONS',CS='ABCDEFGHIJKLMNOPQRSTUVWXYZ.',SPIN=75000;
-function art(){
-var c3=document.querySelector('.c3'),ring=document.getElementById('ring'),sp=[],i;
-function drive(el){
-var k=CS.indexOf(el.textContent),n=0;
-if(k<0)k=0;
-function go(){
-if(n>0){
-n--;k=(k+1)%CS.length;el.textContent=CS.charAt(k);
-if(el.animate)el.animate([{transform:'perspective(60px) rotateX(-58deg)',opacity:.3},{transform:'none',opacity:1}],{duration:260,easing:'ease-out'});
-setTimeout(go,240+Math.random()*280);
-}else{
-n=1+Math.floor(Math.random()*3);setTimeout(go,4000+Math.random()*12000);
-}
-}
-setTimeout(go,Math.random()*8000);
-}
-for(i=0;i<PHRASE.length;i++){var e=document.createElement('span'),g=document.createElement('i');g.textContent=PHRASE.charAt(i);e.appendChild(g);ring.appendChild(e);sp.push(e);drive(g)}
-var P=[],L=[],TOT=0;
-function build(){
-var W=c3.clientWidth,H=c3.clientHeight;
-c3.style.fontSize=(H*0.039)+'px';
-var a=W*0.1766,b=H*0.1673,r=Math.min(W*0.0599,a,b),j,g;
-P=[];
-function arc(cx,cy,a0,a1){for(var i=1;i<=12;i++){g=a0+(a1-a0)*i/12;P.push([cx+r*Math.cos(g),cy+r*Math.sin(g)])}}
-P.push([0,-b]);P.push([a-r,-b]);arc(a-r,-b+r,-Math.PI/2,0);
-P.push([a,b-r]);arc(a-r,b-r,0,Math.PI/2);
-P.push([-a+r,b]);arc(-a+r,b-r,Math.PI/2,Math.PI);
-P.push([-a,-b+r]);arc(-a+r,-b+r,Math.PI,1.5*Math.PI);
-P.push([0,-b]);
-L=[0];TOT=0;
-for(j=1;j<P.length;j++){TOT+=Math.sqrt(Math.pow(P[j][0]-P[j-1][0],2)+Math.pow(P[j][1]-P[j-1][1],2));L.push(TOT)}
-}
-function place(el,d){
-d=((d%TOT)+TOT)%TOT;
-var lo=1,hi=L.length-1,mid;
-while(lo<hi){mid=(lo+hi)>>1;if(L[mid]<d)lo=mid+1;else hi=mid}
-var p0=P[lo-1],p1=P[lo],seg=L[lo]-L[lo-1],f=seg>0?(d-L[lo-1])/seg:0;
-var x=p0[0]+(p1[0]-p0[0])*f,y=p0[1]+(p1[1]-p0[1])*f,r=Math.atan2(p1[1]-p0[1],p1[0]-p0[0]);
-el.style.transform='translate('+x.toFixed(2)+'px,'+y.toFixed(2)+'px) rotate('+r.toFixed(4)+'rad) translate(-50%,-50%)';
-}
-var t0=null;
-function frame(ts){
-if(t0===null)t0=ts;
-var ph=((ts-t0)%SPIN)/SPIN*TOT,j;
-for(j=0;j<sp.length;j++)place(sp[j],ph+j/sp.length*TOT);
-requestAnimationFrame(frame);
-}
-build();window.addEventListener('resize',build);requestAnimationFrame(frame);
-}
-art();
-})();
-</script>
+<div class="grid">
+<img src="jeju/01-GS008909.jpg" alt="" style="--d:0s"><img src="jeju/02-GS008897.jpg" alt="" style="--d:.055s"><img src="jeju/03-GS008896.jpg" alt="" style="--d:.11s"><img src="jeju/04-GS008815.jpg" alt="" style="--d:.165s"><img src="jeju/05-GS008795.jpg" alt="" style="--d:.22s"><img src="jeju/06-GS008802.jpg" alt="" style="--d:.275s">
+<img src="jeju/07-GS008874.jpg" alt="" style="--d:.055s"><img src="jeju/08-GS008996.jpg" alt="" style="--d:.11s"><img src="jeju/09-GS008819.jpg" alt="" style="--d:.165s"><img src="jeju/10-GS008850.jpg" alt="" style="--d:.22s"><img src="jeju/11-GS008830.jpg" alt="" style="--d:.275s"><img src="jeju/12-GS008827.jpg" alt="" style="--d:.33s">
+<div class="poem" style="--d:.65s">마음을 두고 왔다
+문 앞
+바닥에
+그 아무도 없는 집 앞
+기다리면서 기다리고
+고요하게 느낄 땐
+난 살아지고
+이 속살 처럼 번지는 여름 공기
+나무도 없는 바람
+기대면서 저물고
+두고 온 마음도
+지나간다
+소리 없이
+꽃살속으로
+간다고 한다
+돌아온다고했다</div>
+<img src="jeju/13-GS008840.jpg" alt="" style="--d:.11s"><img src="jeju/14-GS008857.jpg" alt="" style="--d:.165s"><img src="jeju/15-GS008869.jpg" alt="" style="--d:.33s"><img src="jeju/16-GS008787.jpg" alt="" style="--d:.385s">
+<img src="jeju/17-GS008902.jpg" alt="" style="--d:.165s"><img src="jeju/18-GS008833.jpg" alt="" style="--d:.22s"><img src="jeju/19-GS008914.jpg" alt="" style="--d:.385s"><img src="jeju/20-GS008947.jpg" alt="" style="--d:.44s">
+<img src="jeju/21-GS008933.jpg" alt="" style="--d:.22s"><img src="jeju/22-GS008923.jpg" alt="" style="--d:.275s"><img src="jeju/23-GS008940.jpg" alt="" style="--d:.33s"><img src="jeju/24-GS008995.jpg" alt="" style="--d:.385s">
+<img src="jeju/25-GS009003.jpg" alt="" style="--d:.44s"><img src="jeju/26-GS008893.jpg" alt="" style="--d:.495s"><img src="jeju/27-GS008997.jpg" alt="" style="--d:.275s"><img src="jeju/28-GS008959.jpg" alt="" style="--d:.33s"><img src="jeju/29-GS008971.jpg" alt="" style="--d:.385s"><img src="jeju/30-GS008963.jpg" alt="" style="--d:.44s">
+<img src="jeju/31-GS009008.jpg" alt="" style="--d:.495s"><img src="jeju/32-GS009022.jpg" alt="" style="--d:.55s">
+</div>
 </body></html>
